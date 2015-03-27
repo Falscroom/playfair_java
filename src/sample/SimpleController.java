@@ -38,9 +38,9 @@ public class SimpleController {
     }
 
     public int which_case(cordinate[] arr) {
-        if(arr[0].simbol == arr[1].simbol) { //ДВА ОДИНАКОВЫХ СИМВОЛА!
+/*        if(arr[0].simbol == arr[1].simbol) { //ДВА ОДИНАКОВЫХ СИМВОЛА! С добавлением функции replace repeats такая ситуация невозможна!
             return 1;
-        }
+        }*/
         if(arr[0].i == arr[1].i) { // В ОДНОЙ СТРОКЕ!
             return 2;
         }
@@ -76,6 +76,17 @@ public class SimpleController {
                 break;
         }
     }
+    public StringBuffer replace_repeats(StringBuffer str) {
+        StringBuffer str_b = new StringBuffer(str.subSequence(0,str.length()));
+        for(int i = 1;i< str_b.length();i++) {
+            if(str_b.charAt(i - 1) == str_b.charAt(i)) {
+                str_b.insert(i,'X');
+            }
+        }
+        if(str_b.length() % 2 == 1 ) str_b.insert(str_b.length(),'X');
+        return str_b;
+    }
+
 
     public void code_decode(ActionEvent actionEvent) {
         alphabet_matrix = new char[5][5];
@@ -108,16 +119,11 @@ public class SimpleController {
             }
         }
         StringBuffer our_text = new StringBuffer(text.getText().toUpperCase().replaceAll(" ", "").subSequence(0, text.getText().replaceAll(" ", "").length()));
-        int checker = 0;
+        our_text = replace_repeats(our_text);
         cordinate[] cord_arr;
         for(int i = 1;i < our_text.length(); i ++) {
-            if((i - 1)%2 == checker) {
+            if((i - 1)%2 == 0) {
                cord_arr = get_cordinate(our_text.charAt(i - 1),our_text.charAt(i));
-                
-               if(which_case(cord_arr) == 1) {
-                    cord_arr = get_cordinate(our_text.charAt(i - 1),'X');
-                   checker = 1;
-               }
                code_it(which_case(cord_arr),cord_arr);
            }
 
