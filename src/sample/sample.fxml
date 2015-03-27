@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="260.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="sample.SimpleController">
+  <children>
+    <Label layoutX="14.0" layoutY="28.0" text="Ключевое слово" />
+    <TextField layoutX="14.0" layoutY="44.0" prefHeight="34.0" prefWidth="572.0" fx:id="key_word" />
+    <Label layoutX="14.0" layoutY="85.0" text="Шифруемый текст" />
+    <TextField layoutX="14.0" layoutY="101.0" prefHeight="34.0" prefWidth="572.0" fx:id="text" />
+    <Label layoutX="14.0" layoutY="142.0" text="Зашифрованный текст" />
+    <TextField layoutX="14.0" layoutY="161.0" prefHeight="34.0" prefWidth="572.0" fx:id="coded_text" />
+    <Button layoutX="176.0" layoutY="206.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="251.0" text="Выполнить" onAction="#code_decode" />
+  </children>
+</AnchorPane>
